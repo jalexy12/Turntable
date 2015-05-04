@@ -35,7 +35,9 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-
+  Pusher.app_id = '118543'
+  Pusher.key = 'bb50ac2c4c3592df0a71'
+  Pusher.secret = '211cc1cdc3a1d314df5e'
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

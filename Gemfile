@@ -30,21 +30,22 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'
 #browserify dem JS packages
 gem "browserify-rails", "~> 0.7"
-
+#react is for kool kids
 gem 'react-rails', github: 'reactjs/react-rails'
-
+#???
 gem 'autoprefixer-rails'
-
+#yea yea javascripts
 gem 'therubyracer',  platforms: :ruby
-
+#Faster to boot and better concurrent connections
 gem 'thin'
-
+#pubsub
 gem 'pusher'
-
+#streemz
 gem 'soundcloud'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+#async rails dawg
+gem 'em-http-request'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
