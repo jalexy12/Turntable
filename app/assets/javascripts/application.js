@@ -12,12 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require react
 //= require react_ujs
 //= require components
 //= require pusher
-//= require materialize-sprockets
 //= require_tree .
 
 var pusher = new Pusher('bb50ac2c4c3592df0a71');
+
+$(function(){ $(document).foundation(); });
