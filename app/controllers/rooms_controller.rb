@@ -19,13 +19,13 @@ class RoomsController < ApplicationController
 
 	def joinroom
 		@room = params[:id]
-		if current_user && current_user.inroom != true
+		if current_user
 			Pusher.trigger(@room, 'userjoinroom', {newuseralert: "#{current_user.email} has joined the room"})
-			current_user.update(inroom: true)
+			# current_user.update(inroom: true)
 			render :room
 		else
 			flash[:alert] = "You can only be in one room at a time"
-			redirect_to(:index)
+			redirect_to('/')
 		end
 	end
 

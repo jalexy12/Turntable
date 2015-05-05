@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require pusher
+//= require materialize-sprockets
 //= require_tree .
 
 var pusher = new Pusher('bb50ac2c4c3592df0a71');
