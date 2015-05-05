@@ -3,7 +3,6 @@
   var channel = pusher.subscribe(room);
 
   channel.bind('userjoinroom', function(data) {
-
         if (!("Notification" in window)) {
           alert("This browser does not support desktop notification");
         }
