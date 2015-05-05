@@ -15,3 +15,5 @@
 //= require turbolinks
 //= require pusher
 //= require_tree .
+
+var pusher = new Pusher('bb50ac2c4c3592df0a71');
