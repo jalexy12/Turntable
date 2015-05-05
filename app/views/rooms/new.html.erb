@@ -1,0 +1,7 @@
+<h1>Submit a new room</h1>
+<%= form_for @room do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit %>
+<% end %>

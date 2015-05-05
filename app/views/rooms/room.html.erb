@@ -1,3 +1,10 @@
 <script type="text/javascript" charset="utf-8">
-  var channel = pusher.subscribe('room-'+<%= current_user.id %>);
+  var pusher = new Pusher('bb50ac2c4c3592df0a71');
+  var room = "<%= @room %>"
+  var channel = pusher.subscribe(room);
+  channel.bind('event', function(data) {
+      msg = data.foo;
+    });
 </script>
+
+

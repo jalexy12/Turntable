@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pusher#index'
   post '/pusher/auth' => 'pusher#auth'
+
   get '/newroom' => 'rooms#new'
-  get '/joinroom/:id' => 'rooms#join'
+  post '/newroom' => 'rooms#create', as: :rooms
+
+  get '/joinroom/:id' => 'rooms#joinroom'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

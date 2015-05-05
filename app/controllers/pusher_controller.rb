@@ -3,6 +3,7 @@ class PusherController < ApplicationController
 
   def index
   	Pusher.get_async("/channels").callback { |response|
+  		puts response[:channels]
   # use reponse[:channels]
 	}.errback { |error|
   # error is an instance of Pusher::Error
