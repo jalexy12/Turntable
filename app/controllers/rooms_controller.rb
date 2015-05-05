@@ -31,6 +31,7 @@ class RoomsController < ApplicationController
 		@user = User.find_by_id(current_user.id)
 		@room = Room.find_by_name(params[:room])
 		@room.users.push(@user)
+		@users = @room.users.all
 	end
 
 	private
