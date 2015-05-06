@@ -16,15 +16,15 @@
       });
 
 </script>
-<div class="userbar left col s4">
-  <% @users.each do |user| %>
-        <div class="col user s4"><%= user.email %></div><br> 
-  <% end %>
-</div>
-
-<div class="container">
-  <div class="row text-center col s8">
-    <h2> Hello <%= current_user.email %> </h2>
+  <div class="userbar left col s4">
+    <% @users.each do |user| %>
+       <div class="col user s4"><%= user.email %></div><br> 
+    <% end %>
   </div>
-</div>
+
+  <div class="container">
+    <div class="row text-center col s8">
+      <h2> Hello <%= current_user.email %> </h2>
+    </div>
+  </div>
 
