@@ -1,25 +1,10 @@
 <script type="text/javascript" charset="utf-8">
-  var room = "<%= @room.name %>";
-  var channel = pusher.subscribe(room);
 
-  channel.bind('userjoinroom', function(data) {
-        if (!("Notification" in window)) {
-          alert("This browser does not support desktop notification");
-        }
-        else if (Notification.permission !== 'denied') {
-          Notification.requestPermission(function (permission) {
-            if (permission === "granted") {
-              var notification = new Notification(data.newuseralert);
-            }
-          });
-        }
-      });
 
 </script>
 
   <div class="userbar left col s6">
-       <% @users = [current_user] %>
-          <%= react_component 'UserList', users: @users %>
+      <%= react_component 'UserList', users: [current_user], room: @room.name %>
   </div>
 
   <div class="container">
