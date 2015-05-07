@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require materialize-sprockets
 //= require turbolinks
+//= require underscore
 //= require react
 //= require react_ujs
 //= require components

@@ -29,6 +29,8 @@ gem 'materialize-sass'
 
 gem 'underscore-rails'
 
+gem 'twitter'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Use Unicorn as the app server

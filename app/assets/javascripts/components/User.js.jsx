@@ -1,10 +1,22 @@
+var UserList = React.createClass({
+	render: function(){
+		var users = this.props.users.map(function(user){
+			return(
+			  <div className="row"><User user={user} /><br /> </div>
+			)
+		})
+		return (<div> {users} </div>)
+
+	}
+})
+
+
 var User = React.createClass({
 	render: function(){
 		return(
-			<div className="small 2 columns text-center"> 
-				<h5 className="userheading row">{this.props.user.email}</h5>
-				<img className="useravatar row" src={this.props.user.avatar} />
-				<span className="usergenre row">Favorite genre: {this.props.user.favgenre} </span>
+			<div className="col s6"> 
+				<img className="useravatar" src={this.props.user.avatar} />
+				<span className="userheading">{this.props.user.email}</span>
 			</div>
 			)
 	}

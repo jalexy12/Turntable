@@ -16,10 +16,10 @@
       });
 
 </script>
-  <div class="userbar left col s4">
-    <% @users.each do |user| %>
-       <div class="col user s4"><%= user.email %></div><br> 
-    <% end %>
+
+  <div class="userbar left col s6">
+       <% @users = [current_user] %>
+          <%= react_component 'UserList', users: @users %>
   </div>
 
   <div class="container">
