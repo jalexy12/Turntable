@@ -1,10 +1,5 @@
-<script type="text/javascript" charset="utf-8">
-
-
-</script>
-
   <div class="userbar left col s6">
-      <%= react_component 'UserList', users: [current_user], room: @room.name %>
+      <%= react_component 'UserList', users: @users, room: @room.name %>
   </div>
 
   <div class="container">
