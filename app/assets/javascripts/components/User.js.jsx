@@ -1,38 +1,42 @@
-
-
 var UserList = React.createClass({
 
 	getInitialState: function (){
-		return {users: this.props.users}
+		return {
+			users: this.props.users,
+		}
 	},
 
-	handleAdd: function(user){
-		Users.addUser(user);
-		return this.setState({users: Users.users});
+	handleRemove: function (data){
+		$.post('/room/' + this.props.room +  '/remove/' + data.id)
 	},
-
-	handleRemove: function (user){
-		var users = _.without(this.state.users, user)
-		$.post('/room/' + this.props.room +  '/remove/' + user.id)
-		return this.setState({users: users})
+	updateUserState: function (data){
+		return this.setState({users: data.users})
 	},
 
 	componentDidMount: function(){
 	   var that = this;
-	   // window.addEventListener('unload')
-	   var channel = pusher.subscribe(this.props.room);
+	   channel = pusher.subscribe('private-' + this.props.room)
+
+	   channel.bind('client-userleave', function(data){
+	   		that.updateUserState(data)
+		});
+
+	   channel.bind('client-userjoin', function(data){
+	   		that.updateUserState(data)
+	   });
 	},
 
 	render: function(){
-		console.log(this.state.users)
-		var users = this.state.users.map(function(user){
-		  var boundClick = this.handleRemove.bind(this, user);
-			return(
-			  <div className="row">
-			    <User user={user} onClick={boundClick} /><br /> 
-			  </div>
-			)
-		}, this)
+		  if (this.state.users !== null){
+			var users = this.state.users.map(function(user){
+			  var boundClick = this.handleRemove.bind(this, user);
+				return(
+				  <div className="row">
+				    <User user={user} onClick={boundClick} /><br /> 
+				  </div>
+				)
+			}, this)
+		}
 		return (<div> {users} </div>)
 
 	}
@@ -42,7 +46,7 @@ var UserList = React.createClass({
 var User = React.createClass({
 	render: function(){
 		return(
-			<div className="col s6"> 
+			<div className="col s6 text-center"> 
 				<img className="useravatar" src={this.props.user.avatar} />
 				<span className="userheading">{this.props.user.email}</span>
 				<button className="userbutton" onClick={this.props.onClick}>Remove</button>

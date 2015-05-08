@@ -20,7 +20,7 @@ class RoomsController < ApplicationController
 	def joinroom
 		@room = Room.find_by_name(params[:id])
 		if current_user
-			Pusher.trigger(@room.name, 'userjoinroom', {newuseralert: "#{current_user.email} has joined the room", user: current_user})
+			@room.users.push(current_user)
 			redirect_to :controller => :rooms, :action => :room, :room => @room.name
 		else
 			flash[:alert] = "You can only be in one room at a time"
@@ -30,14 +30,17 @@ class RoomsController < ApplicationController
 	def room
 		@user = User.find_by_id(current_user.id)
 		@room = Room.find_by_name(params[:room])
-		@room.users.push(@user)
 		@users = @room.users.all
+		Pusher.trigger("private-#{@room.name}", 'client-userjoin', {users: @users, user: current_user})
 	end
 
 	def remove
 	  @room = Room.find_by_name(params[:room])
+	  @user = User.find_by_id(params[:id])
 	  @room.users.delete(params[:id])
+	  @users = @room.users.all
 	  @room.save
+	  Pusher.trigger("private-#{@room.name}", 'client-userleave', {users: @users, user: @user})
 	  render json: @room.users
 	end
 
