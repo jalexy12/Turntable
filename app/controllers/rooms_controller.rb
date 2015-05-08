@@ -39,7 +39,6 @@ class RoomsController < ApplicationController
 	  @user = User.find_by_id(params[:id])
 	  @room.users.delete(params[:id])
 	  @users = @room.users.all
-	  @room.save
 	  Pusher.trigger("private-#{@room.name}", 'client-userleave', {users: @users, user: @user})
 	  render json: @room.users
 	end

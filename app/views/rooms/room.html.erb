@@ -1,5 +1,5 @@
   <div class="userbar left col s6">
-      <%= react_component 'UserList', {users: @users, room: @room.name}, {prerender: true} %>
+      <%= react_component 'UserList', {users: @users, user: current_user, room: @room.name}, {prerender: true} %>
   </div>
 
   <div class="container">
