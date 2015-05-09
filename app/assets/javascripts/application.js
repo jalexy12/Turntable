@@ -20,5 +20,6 @@
 //= require components
 //= require pusher
 //= require_tree .
+pusher = new Pusher('bb50ac2c4c3592df0a71');
+injectTapEventPlugin = require("react-tap-event-plugin");
 
-var pusher = new Pusher('bb50ac2c4c3592df0a71');

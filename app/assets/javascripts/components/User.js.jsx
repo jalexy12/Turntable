@@ -1,4 +1,7 @@
-var UserList = React.createClass({
+mui = require('material-ui');
+FloatingActionButton = mui.FloatingActionButton;
+
+UserList = React.createClass({
 
 	getInitialState: function (){
 		return {
@@ -17,7 +20,6 @@ var UserList = React.createClass({
 
 	componentDidMount: function(){
 	   var that = this;
-
 	   channel = pusher.subscribe('private-' + this.props.room)
 
 	   channel.bind('client-userleave', function(data){
@@ -46,13 +48,12 @@ var UserList = React.createClass({
 })
 
 
-var User = React.createClass({
+User = React.createClass({
 	render: function(){
 		return(
 			<div className="col s6 valign-wrapper"> 
 				<span className="col s4"><img className="useravatar" src={this.props.user.avatar} /></span>
 				<span className="userheadingcol s4">{this.props.user.email}</span>
-				<button className="btn waves-effect userbutton col s4" onClick={this.props.onClick}>Leave</button>
 			</div>
 			)
 	}
