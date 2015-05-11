@@ -1,6 +1,3 @@
-mui = require('material-ui');
-FloatingActionButton = mui.FloatingActionButton;
-
 UserList = React.createClass({
 
 	getInitialState: function (){
@@ -32,6 +29,7 @@ UserList = React.createClass({
 	},
 
 	render: function(){
+
 		  if (this.state.users !== null){
 			var users = this.state.users.map(function(user){
 			  var boundClick = this.handleRemove.bind(this, user);
@@ -54,6 +52,7 @@ User = React.createClass({
 			<div className="col s6 valign-wrapper"> 
 				<span className="col s4"><img className="useravatar" src={this.props.user.avatar} /></span>
 				<span className="userheadingcol s4">{this.props.user.email}</span>
+				<button className="btn btn-waves" onClick={this.props.onClick}>Remove</button>
 			</div>
 			)
 	}

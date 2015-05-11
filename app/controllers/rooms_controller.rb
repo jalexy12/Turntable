@@ -4,6 +4,13 @@ class RoomsController < ApplicationController
 	def index
 	end
 
+	def soundcloud
+		tracks = $soundcloud_client.get('/tracks', :limit => 10, :order => 'hotness')
+		# @tracks = tracks.map do |track|
+  # 			$soundcloud_client.get(track.stream_url)
+		# end
+	end
+
 	def new
 		@room = Room.new
 	end
@@ -49,3 +56,4 @@ class RoomsController < ApplicationController
 		params.require(:room).permit(:name)
 	end
 end
+
